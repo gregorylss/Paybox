@@ -29,7 +29,9 @@ class ConfigurationController extends BaseAdminController
 {
     public function displayConfigurationPage()
     {
-        $logFilePath = sprintf(THELIA_ROOT."log".DS."%s.log", Paybox::MODULE_CODE);
+        $logFilePath = sprintf(THELIA_LOG_DIR."%s.log", strtolower(Paybox::MODULE_CODE));
+
+        // Get the last 100 lines
 
         $traces = @file_get_contents($logFilePath);
 
